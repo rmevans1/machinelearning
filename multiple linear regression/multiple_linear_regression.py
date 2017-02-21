@@ -46,4 +46,7 @@ y_pred = regressor.predict(X_test)
 
 # Building the optimal model using Backward Elimination
 import statsmodels.formula.api as sm
-X = np.append(arr = np.ones((50,1)).astype(int) values = X, axis = 1)
+X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis = 1)
+# Step 2 FIt the full model with all possible predictors
+X_opt = X[:, [0,1,2,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
