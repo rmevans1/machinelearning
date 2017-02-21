@@ -22,3 +22,15 @@ regressor = lm(formula = Salary ~ YearsExperience,
 
 # Predicting the Test set results
 y_pred = predict(regressor, newdata = test_set)
+
+# Visualising the Training set results
+# install.packages('ggplot2')
+library(ggplot2)
+ggplot() +
+  geom_point(aes(x = training_set$YearsExperience, y = training_set$Salary),
+             color = 'red') +
+  geom_line(aes(x = training_set$YearsExperience, y = predict(regressor, newdata = training_set)),
+            color = 'blue') +
+  ggtitle('Salary vs Experience (Training set)') +
+  xlab('Years of experience') +
+  ylab('Salary')
